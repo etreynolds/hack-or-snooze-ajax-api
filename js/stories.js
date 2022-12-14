@@ -99,9 +99,15 @@ async function toggleStoryFavorite(evt) {
   const story = storyList.stories.find(s => s.storyId === storyId);
 
   if ($target.hasClass("fas")) {
-
+    await currentUser.removeFavorite(story);
+    $target.closest("i").toggleClass("fas far");
+  } else {
+    await currentUser.addFavorite(story);
+    $target.closest("i").toggleClass("fas far");
   }
 }
+
+$storiesList.on("click", ".heart")
 
 /** Handle deleting stories */
 async function deleteStory(evt) {
@@ -115,3 +121,34 @@ async function deleteStory(evt) {
 
 $ownStories.on("click", ".trash-can", deleteStory);
 
+/** Functionality for list of user's own stories */
+function putUserStoriesOnPage() {
+  console.debug("putUserStoriesOnPage");
+  $ownStories.empty();
+
+  if (currentUser.ownStories.length === 0) {
+    $ownStories.append("No added stories yet!");
+  } else {
+    for (let story of currentUser.ownStories) {
+      let $story = generateStoryMarkup(story, true);
+      $ownStories.append($story);
+    }
+  }
+  $ownStories.show();
+}
+
+/** Put list of favorites on page */
+function putFavoritesListOnPage() {
+  console.debug("putFavoritesListOnPage");
+  $favoritedStories.empty();
+
+  if (currentUser.favorites.length === 0) {
+    $favoritedStories.append("No favorited stories yet!");
+  } else {
+    for (let story of currentUser.favorites) {
+      const $story = generateStoryMarkup(story);
+      $favoritedStories.append($story);
+    }
+  }
+  $favoritedStories.show();
+}
