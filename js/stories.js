@@ -72,3 +72,46 @@ function putStoriesOnPage() {
 
   $allStoriesList.show();
 }
+
+/** Make delete button HTML for stories */
+function getDeleteButtonHTML() {
+  return `<span class="trash-can">
+         <i class="fas fa-trash-alt"></i>
+        </span>`;
+}
+
+/* Make favorite/unfavorite heart for stories */
+function getHeartHTML(story, user) {
+  const isFavorite = user.isFavorite(story);
+  const favHeart = isFavorite ? "fas" : "far";
+  return `<span class="heart">
+          <i class="${favHeart} fa-heart"></i>
+          </span>`;
+}
+
+/* Handle favorite/unfavorite stories */
+async function toggleStoryFavorite(evt) {
+  console.debug("toggleStoryFavorite");
+
+  const $target = $(e.target);
+  const $closestLi = $target.closest("li");
+  const storyId = $closestLi.attr("id");
+  const story = storyList.stories.find(s => s.storyId === storyId);
+
+  if ($target.hasClass("fas")) {
+
+  }
+}
+
+/** Handle deleting stories */
+async function deleteStory(evt) {
+  console.debug("deleteStory");
+
+  const $closestLi = $(evt.target).closest("li");
+  const storyId = $closestLi.attr("id");
+  await storyList.removeStory(currentUser, storyId);
+  await putUserStoriesOnPage;
+}
+
+$ownStories.on("click", ".trash-can", deleteStory);
+
