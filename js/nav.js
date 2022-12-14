@@ -36,12 +36,39 @@ function updateNavOnLogin() {
 }
 
 // Show form to submit story on clicking "submit"
-
 function navSubmitStoryClick(evt) {
-  console.debug("navSubmitStoryClick");
+  console.debug("navSubmitStoryClick", evt);
   hidePageComponents();
   $allStoriesList.show();
   $submitForm.show();
 }
 
 $navSubmitStory.on("click", navSubmitStoryClick);
+
+/** Show favorite stories on clicking "favorites" */
+function navFavoritesClick(evt) {
+  console.debug("navFavoritesClick", evt);
+  hidePageComponents();
+  putFavoritesListOnPage();
+}
+
+$body.on("click", "#nav-favorites", navFavoritesClick);
+
+/** Show my stories on clicking "my stories" */
+function navMyStories(evt) {
+  console.debug("navMyStories", evt);
+  hidePageComponents();
+  putUserStoriesOnPage();
+  $ownStories.show();
+}
+
+$body.on("click", "#nav-my-stories", navMyStories);
+
+/** Hide everything but profile on clicking "profile" */
+function navProfileClick(evt) {
+  console.debug("navProfileClick", evt);
+  hidePageComponents();
+  $userProfile.show();
+}
+
+$navUserProfile.on("click", navProfileClick);

@@ -107,7 +107,7 @@ async function toggleStoryFavorite(evt) {
   }
 }
 
-$storiesList.on("click", ".heart")
+$storiesList.on("click", ".heart", toggleStoryFavorite);
 
 /** Handle deleting stories */
 async function deleteStory(evt) {
