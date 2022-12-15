@@ -14,36 +14,15 @@ function navAllStories(evt) {
 
 $body.on("click", "#nav-all", navAllStories);
 
-/** Show login/signup on click on "login" */
-
-function navLoginClick(evt) {
-  console.debug("navLoginClick", evt);
-  hidePageComponents();
-  $loginForm.show();
-  $signupForm.show();
-}
-
-$navLogin.on("click", navLoginClick);
-
-/** When a user first logins in, update the navbar to reflect that. */
-
-function updateNavOnLogin() {
-  console.debug("updateNavOnLogin");
-  $(".main-links").show();
-  $navLogin.hide();
-  $navLogOut.show();
-  $navUserProfile.text(`${currentUser.username}`).show();
-}
-
 // Show form to submit story on clicking "submit"
 function navSubmitStoryClick(evt) {
   console.debug("navSubmitStoryClick", evt);
   hidePageComponents();
   $allStoriesList.show();
-  $submitForm.show();
+  $submitForm.slideDown("slow");
 }
 
-$navSubmitStory.on("click", navSubmitStoryClick);
+$body.on("click", "#nav-submit-story", navSubmitStoryClick);
 
 /** Show favorite stories on clicking "favorites" */
 function navFavoritesClick(evt) {
@@ -64,6 +43,31 @@ function navMyStories(evt) {
 
 $body.on("click", "#nav-my-stories", navMyStories);
 
+/** Show login/signup on click on "login" */
+
+function navLoginClick(evt) {
+  console.debug("navLoginClick", evt);
+  hidePageComponents();
+  $loginForm.show();
+  $signupForm.show();
+}
+
+// $navLogin.on("click", navLoginClick);
+
+$body.on("click", "#nav-login", navLoginClick);
+
+/** When a user first logins in, update the navbar to reflect that. */
+
+function updateNavOnLogin() {
+  console.debug("updateNavOnLogin");
+  $(".main-links").show();
+  $navLogin.hide();
+  $navLogOut.show();
+  $navUserProfile.text(`${currentUser.username}`).show();
+}
+
+
+
 /** Hide everything but profile on clicking "profile" */
 function navProfileClick(evt) {
   console.debug("navProfileClick", evt);
@@ -71,4 +75,6 @@ function navProfileClick(evt) {
   $userProfile.show();
 }
 
-$navUserProfile.on("click", navProfileClick);
+// $navUserProfile.on("click", navProfileClick);
+
+$body.on("click", "#nav-user-profile", navProfileClick);

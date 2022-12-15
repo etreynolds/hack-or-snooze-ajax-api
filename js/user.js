@@ -28,6 +28,7 @@ async function login(evt) {
 }
 
 $loginForm.on("submit", login);
+// $body.on("submit", "#login-form", login);
 
 /** Handle signup form submission. */
 
@@ -50,6 +51,7 @@ async function signup(evt) {
 }
 
 $signupForm.on("submit", signup);
+// $body.on("click", "#signup-form", signup);
 
 /** Handle click of logout button
  *
@@ -63,6 +65,7 @@ function logout(evt) {
 }
 
 $navLogOut.on("click", logout);
+// $body.on("click", "#nav-logout", logout);
 
 /******************************************************************************
  * Storing/recalling previously-logged-in-user with localStorage
@@ -124,5 +127,5 @@ function generateUserProfile() {
   console.debug("generateUserProfile");
   $("#profile-name").text(currentUser.name);
   $("#profile-username").text(currentUser.username);
-  $("#profile-account-date").text(currentUser.createdAtl.slick(0, 10));
+  $("#profile-account-date").text(currentUser.createdAt.slice(0, 10));
 }

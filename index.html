@@ -35,9 +35,9 @@
       <a class="nav-link" href="#" id="nav-all">Hack or Snooze</a>
     </div>
     <div class="main-links hidden">
-      <a href="#" class="nav-link" id="navSubmitStory">submit</a> ||
-      <a href="#" class="nav-link" id="navFavorites">favorites</a> ||
-      <a href="#" class="nav-link" id="navStories">my stories</a>
+      <a href="#" class="nav-link" id="nav-submit-story">submit</a> ||
+      <a href="#" class="nav-link" id="nav-favorites">favorites</a> ||
+      <a href="#" class="nav-link" id="nav-my-stories">my stories</a>
     </div>
     <div class="nav-right">
       <a class="nav-link" href="#" id="nav-login">login/signup</a>
@@ -111,6 +111,11 @@
       <button type="submit">create account</button>
     </form>
   </section>
+
+  <!-- Hidden favorites and my stories section -->
+
+  <ol id="favorited-stories" class="hidden stories-list"></ol>
+  <ol id="my-stories" class="hidden stories-list"></ol>
 
   <!-- Library JS & our JS -->
   <script src="https://unpkg.com/jquery"></script>
